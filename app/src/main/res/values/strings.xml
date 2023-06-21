@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Ishihara_test</string>
+    <string name="start">Start</string>
+    <string name="test">Test</string>
+    <string name="versus">Versus</string>
+    <string name="return_button">Return</string>
+    <string name="submit">Submit</string>
 </resources>
