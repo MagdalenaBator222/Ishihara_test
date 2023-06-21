@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/chooseModeFragment">
+
+    <fragment
+        android:id="@+id/chooseModeFragment"
+        android:name="com.pl.agh.bator.ishihara_test.ChooseModeFragment"
+        android:label="fragment_choose_mode"
+        tools:layout="@layout/fragment_choose_mode" >
+        <action
+            android:id="@+id/action_chooseModeFragment_to_loopTestFragment"
+            app:destination="@id/loopTestFragment" />
+        <action
+            android:id="@+id/action_chooseModeFragment_to_loopVersusFragment"
+            app:destination="@id/loopVersusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loopTestFragment"
+        android:name="com.pl.agh.bator.ishihara_test.LoopTestFragment"
+        android:label="fragment_loop_test"
+        tools:layout="@layout/fragment_loop_test" >
+        <action
+            android:id="@+id/action_loopTestFragment_to_resultsTestFragment"
+            app:destination="@id/resultsTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loopVersusFragment"
+        android:name="com.pl.agh.bator.ishihara_test.LoopVersusFragment"
+        android:label="fragment_loop_versus"
+        tools:layout="@layout/fragment_loop_versus" >
+        <action
+            android:id="@+id/action_loopVersusFragment_to_resultsVersusFragment"
+            app:destination="@id/resultsVersusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultsTestFragment"
+        android:name="com.pl.agh.bator.ishihara_test.ResultsTestFragment"
+        android:label="fragment_results_test"
+        tools:layout="@layout/fragment_results_test" >
+        <action
+            android:id="@+id/action_resultsTestFragment_to_chooseModeFragment"
+            app:destination="@id/chooseModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultsVersusFragment"
+        android:name="com.pl.agh.bator.ishihara_test.ResultsVersusFragment"
+        android:label="fragment_results_versus"
+        tools:layout="@layout/fragment_results_versus" >
+        <action
+            android:id="@+id/action_resultsVersusFragment_to_leaderboardFragment"
+            app:destination="@id/leaderboardFragment" />
+        <action
+            android:id="@+id/action_resultsVersusFragment_to_chooseModeFragment"
+            app:destination="@id/chooseModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.pl.agh.bator.ishihara_test.LeaderboardFragment"
+        android:label="fragment_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" >
+        <action
+            android:id="@+id/action_leaderboardFragment_to_chooseModeFragment"
+            app:destination="@id/chooseModeFragment" />
+    </fragment>
+</navigation>
