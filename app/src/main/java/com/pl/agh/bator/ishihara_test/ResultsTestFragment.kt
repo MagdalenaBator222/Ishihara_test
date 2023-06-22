@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.fragment.findNavController
-import com.pl.agh.bator.ishihara_test.databinding.FragmentChooseModeBinding
+import com.pl.agh.bator.ishihara_test.databinding.FragmentResultsTestBinding
 
 
 /**
@@ -15,7 +14,7 @@ import com.pl.agh.bator.ishihara_test.databinding.FragmentChooseModeBinding
  */
 class ResultsTestFragment : Fragment() {
 
-    private var _binding : FragmentChooseModeBinding? = null
+    private var _binding : FragmentResultsTestBinding? = null
     private val binding get() = _binding!! // get-only property
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,16 +27,17 @@ class ResultsTestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentChooseModeBinding.inflate(inflater, container, false)
+        _binding = FragmentResultsTestBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<Button>(R.id.return_to_menu).setOnClickListener {
+
+        // return to main menu:
+        binding.returnToMenu.setOnClickListener {
             findNavController().navigate(R.id.action_resultsTestFragment_to_chooseModeFragment)
         }
-
     }
 
     override fun onDestroyView() {

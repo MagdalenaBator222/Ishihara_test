@@ -5,13 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.navigation.fragment.findNavController
 import com.pl.agh.bator.ishihara_test.databinding.FragmentLoopTestBinding
 
 
 /**
- * [LoopTestFragment] is where the proper colour blindness test takes place
+ * [LoopTestFragment] is where the proper colour blindness test takes place (test mode)
  */
 
 class LoopTestFragment : Fragment() {
@@ -37,13 +36,17 @@ class LoopTestFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // navigate to the next screen after clicking on one of the buttons
-        // the code below is not working:
-        view.findViewById<Button>(R.id.answer_1).setOnClickListener {
-            findNavController().navigate(R.id.action_loopTestFragment_to_resultsTestFragment) }
-        view.findViewById<Button>(R.id.answer_2).setOnClickListener {
-            findNavController().navigate(R.id.action_loopTestFragment_to_resultsTestFragment) }
-        view.findViewById<Button>(R.id.answer_3).setOnClickListener {
-            findNavController().navigate(R.id.action_loopTestFragment_to_resultsTestFragment) }
+        binding.answer1.setOnClickListener {
+            findNavController().navigate(R.id.action_loopTestFragment_to_resultsTestFragment)
+        }
+
+        binding.answer2.setOnClickListener {
+            findNavController().navigate(R.id.action_loopTestFragment_to_resultsTestFragment)
+        }
+
+        binding.answer3.setOnClickListener {
+            findNavController().navigate(R.id.action_loopTestFragment_to_resultsTestFragment)
+        }
     }
 
     override fun onDestroyView() {

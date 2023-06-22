@@ -5,28 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import androidx.navigation.fragment.findNavController
+import com.pl.agh.bator.ishihara_test.databinding.FragmentResultsVersusBinding
 
 /**
- * A simple [Fragment] subclass.
- * Use the [ResultsVersusFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Fragment where the test results are displayed (for the versus mode).
+ * The user can choose whether to submit the results for display on the leaderboard or return
+ * to main menu.
  */
+
 class ResultsVersusFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentResultsVersusBinding? = null
+    private val binding get() = _binding!! // get-only property
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        arguments?.let {} // empty for now
     }
 
     override fun onCreateView(
@@ -34,26 +28,24 @@ class ResultsVersusFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_results_versus, container, false)
+        _binding = FragmentResultsVersusBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ResultsVersusFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ResultsVersusFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // return to main menu or submit your result to be displayed on the leaderboard
+        binding.returnToMenu.setOnClickListener {
+            findNavController().navigate(R.id.action_resultsVersusFragment_to_chooseModeFragment)
+        }
+        binding.submit.setOnClickListener {
+            findNavController().navigate(R.id.action_resultsVersusFragment_to_leaderboardFragment)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
