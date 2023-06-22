@@ -35,7 +35,7 @@ class ChooseModeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.startGame.setOnClickListener {
-            if(binding.testOption.isSelected) {
+            if(binding.selectMode.checkedButtonId == R.id.test_option) {
                 findNavController().navigate(R.id.action_chooseModeFragment_to_loopTestFragment)
             } else {
                 findNavController().navigate(R.id.action_chooseModeFragment_to_loopVersusFragment)

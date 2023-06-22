@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
-import com.pl.agh.bator.ishihara_test.databinding.FragmentChooseModeBinding
+import com.pl.agh.bator.ishihara_test.databinding.FragmentLoopTestBinding
 
 
 /**
@@ -16,7 +16,7 @@ import com.pl.agh.bator.ishihara_test.databinding.FragmentChooseModeBinding
 
 class LoopTestFragment : Fragment() {
 
-    private var _binding : FragmentChooseModeBinding? = null
+    private var _binding : FragmentLoopTestBinding? = null
     private val binding get() = _binding!! // get-only property
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +29,7 @@ class LoopTestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentChooseModeBinding.inflate(inflater, container, false)
+        _binding = FragmentLoopTestBinding.inflate(inflater, container, false)
         return binding.root
     }
 
