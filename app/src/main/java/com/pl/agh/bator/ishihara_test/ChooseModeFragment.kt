@@ -33,7 +33,12 @@ class ChooseModeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.testOption.setOnClickListener {
+            changeDescription(false)
+        }
+        binding.versusOption.setOnClickListener {
+            changeDescription(true)
+        }
         binding.startGame.setOnClickListener {
             if(binding.selectMode.checkedButtonId == R.id.test_option) {
                 findNavController().navigate(R.id.action_chooseModeFragment_to_loopTestFragment)
@@ -46,5 +51,20 @@ class ChooseModeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    //TODO change to enums or smth or even ViewModel
+    //for now true = versus
+    fun changeDescription(state: Boolean) {
+        if(state)
+        {
+            _binding!!.descriptionImage.setImageResource(R.drawable.podium)
+            binding!!.descriptionText.setText(R.string.versus_description)
+        }
+        else
+        {
+            _binding!!.descriptionImage.setImageResource(R.drawable.eye)
+            _binding!!.descriptionText.setText(R.string.test_description)
+        }
     }
 }

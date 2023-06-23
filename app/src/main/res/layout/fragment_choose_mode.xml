@@ -6,38 +6,90 @@
     android:layout_height="match_parent"
     tools:context=".ChooseModeFragment">
 
-    <com.google.android.material.button.MaterialButtonToggleGroup
-        android:id="@+id/select_mode"
+    <TextView
+        android:id="@+id/choose_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"
+        android:text="@string/choose_mode"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"/>
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/select_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/choose_description"
         app:singleSelection="true"
         app:selectionRequired="true"
-        app:checkedButton="@id/test_option">
+        app:checkedButton="@id/test_option"
+        >
         <Button
             android:id="@+id/test_option"
             style="?attr/materialButtonOutlinedStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/test" />
+            android:text="@string/test"
+            android:layout_weight="1"
+            app:icon="@drawable/mode_selector"
+            app:iconPadding="-25dp"
+            android:paddingStart="50dp"/>
         <Button
             android:id="@+id/versus_option"
             style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/versus"
+            android:layout_weight="1"
+            app:icon="@drawable/mode_selector"
+            app:iconPadding="-20dp"
+            android:paddingStart="40dp"/>
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.498">
+
+        <ImageView
+            android:id="@+id/description_image"
+            android:layout_width="match_parent"
+            android:layout_height="172dp"
+            android:src="@drawable/eye" />
+
+        <TextView
+            android:id="@+id/description_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/versus" />
-    </com.google.android.material.button.MaterialButtonToggleGroup>
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:gravity="center"
+            android:text="@string/test_description"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+    </LinearLayout>
+
     <Button
         android:id="@+id/start_game"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="100dp"
         android:text="@string/start" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
