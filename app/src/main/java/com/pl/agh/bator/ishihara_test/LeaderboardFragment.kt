@@ -1,5 +1,6 @@
 package com.pl.agh.bator.ishihara_test
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -27,6 +28,12 @@ class LeaderboardFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentLeaderboardBinding.inflate(inflater, container, false)
+
+        // temporary displaying made up leaderboard
+        val mockupData = MockupData().loadMockup()
+        val recyclerView = _binding!!.recyclerView
+        recyclerView.adapter = LeaderboardAdapter(mockupData)
+
         return binding.root
     }
 
