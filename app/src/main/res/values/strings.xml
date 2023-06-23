@@ -13,4 +13,5 @@
     <string name="score">Score</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac mauris quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus sollicitudin, nunc a molestie lobortis, purus sapien convallis nibh, eu finibus augue lacus id libero.</string>
     <string name="correct_answers">Correct answers</string>
+    <string name="question">What do you see?</string>
 </resources>
