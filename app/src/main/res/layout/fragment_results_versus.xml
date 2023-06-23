@@ -6,9 +6,86 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ResultsVersusFragment">
+    <TextView
+        android:id="@+id/score_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"
+        android:text="@string/score"
+        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"/>
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/score_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/score_title"
+        android:layout_marginTop="10dp"
+        app:dividerInsetStart="40dp"
+        app:dividerInsetEnd="40dp"
+        />
+    <TextView
+        android:id="@+id/score_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/score_divider"
+        android:layout_marginTop="10dp"
+        android:text="75.5"
+        android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"/>
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/sparkles"
+        app:layout_constraintBottom_toTopOf="@id/leaderboard_description"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/score_value"/>
+    <TextView
+        android:id="@+id/leaderboard_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/leaderboard_description"
+        app:layout_constraintBottom_toTopOf="@id/displayedName"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="?attr/textInputFilledStyle"
+        android:id="@+id/displayedName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@id/submit"
+        app:counterEnabled="true"
+        app:counterMaxLength="16"
+        android:hint="@string/displayed_name"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLength="16"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/submit"
-        android:layout_width="wrap_content"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -27,5 +104,6 @@
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="20dp"
         android:text="@string/return_button"
+        style="@style/Widget.Material3.Button.OutlinedButton"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>

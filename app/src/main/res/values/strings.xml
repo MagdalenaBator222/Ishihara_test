@@ -8,4 +8,9 @@
     <string name="choose_mode">Choose mode</string>
     <string name="test_description">Check how you perform, doing standard Ishihara test! At the end of the test you will receive color blindness scores deducted by our app.</string>
     <string name="versus_description">Challenge your friends in this Ishihara solving test trial. Best scores achieved will be ranked on leaderboard!</string>
+    <string name="displayed_name">Displayed name</string>
+    <string name="leaderboard_description">If you want you can check your score on leaderboard now! To do so choose a displayed name and click submit button.</string>
+    <string name="score">Score</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ac mauris quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus sollicitudin, nunc a molestie lobortis, purus sapien convallis nibh, eu finibus augue lacus id libero.</string>
+    <string name="correct_answers">Correct answers</string>
 </resources>
