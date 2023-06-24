@@ -69,7 +69,7 @@ class LoopTestFragment : Fragment() {
             .setTitle(getString(R.string.return_dialog))
             .setMessage(getString(R.string.return_dialog_detail))
             .setCancelable(false)
-            .setPositiveButton(getString(R.string.return_btn)) { _, _ ->
+            .setPositiveButton(getString(R.string.confirm_btn)) { _, _ ->
                 findNavController().navigate(R.id.action_loopTestFragment_to_chooseModeFragment)
             }
             .setNegativeButton(getString(R.string.cancel_btn)) { _, _ ->

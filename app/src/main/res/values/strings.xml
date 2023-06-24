@@ -18,6 +18,6 @@
     <string name="result_caption">Your result</string>
     <string name="return_dialog">Return to main menu?</string>
     <string name="return_dialog_detail">Your progress will not be saved.</string>
-    <string name="cancel_btn">Continue the test</string>
-    <string name="return_btn">Return to main menu</string>
+    <string name="confirm_btn">Confirm</string>
+    <string name="cancel_btn">Cancel</string>
 </resources>
