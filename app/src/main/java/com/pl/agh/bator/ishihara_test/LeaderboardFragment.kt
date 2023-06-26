@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.navigation.fragment.findNavController
 import com.pl.agh.bator.ishihara_test.databinding.FragmentLeaderboardBinding
 
@@ -20,6 +21,11 @@ class LeaderboardFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {} // empty for now
+
+        // if the back button is pressed, go back to main menu
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+            findNavController().navigate(R.id.action_leaderboardFragment_to_chooseModeFragment)
+        }
     }
 
     override fun onCreateView(

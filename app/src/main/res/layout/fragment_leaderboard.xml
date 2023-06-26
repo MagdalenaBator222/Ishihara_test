@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="15dp"
-        android:text="@string/leaderoard_title"
+        android:text="@string/leaderboard_title"
         android:textAppearance="@style/TextAppearance.Material3.TitleLarge"/>
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/score_divider"
