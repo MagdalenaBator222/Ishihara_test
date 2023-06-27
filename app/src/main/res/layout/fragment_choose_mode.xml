@@ -67,7 +67,7 @@
             android:id="@+id/description_image"
             android:layout_width="match_parent"
             android:layout_height="172dp"
-            android:src="@drawable/eye" />
+            android:src="@drawable/eye_icon_foreground" />
 
         <TextView
             android:id="@+id/description_text"
