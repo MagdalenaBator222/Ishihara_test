@@ -35,6 +35,7 @@ class LeaderboardFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentLeaderboardBinding.inflate(inflater, container, false)
 
+        //TODO: Get real
         // temporary displaying made up leaderboard
         val mockupData = MockupData().loadMockup()
         val recyclerView = _binding!!.recyclerView

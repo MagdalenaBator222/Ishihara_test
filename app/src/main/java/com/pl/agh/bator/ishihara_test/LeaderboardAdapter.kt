@@ -25,7 +25,7 @@ class LeaderboardAdapter (private val dataset: List<LeaderboardScore>) : Recycle
     override fun onBindViewHolder(holder: LeaderboardViewHolder, position: Int) {
         val score = dataset[position]
         holder.itemView.findViewById<TextView>(R.id.place_and_name).text =
-            "${score.position}. ${score.name}"
+            "${position + 1}. ${score.name}"
         holder.itemView.findViewById<TextView>(R.id.score).text =
             "${score.score}"
     }
