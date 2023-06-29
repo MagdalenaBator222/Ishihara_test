@@ -5,9 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 
-class LeaderboardAdapter (private val dataset: List<LeaderboardScore>) : RecyclerView.Adapter<LeaderboardAdapter.LeaderboardViewHolder>() {
+class LeaderboardAdapter(private val dataset: LiveData<List<LeaderboardScore>>) : RecyclerView.Adapter<LeaderboardAdapter.LeaderboardViewHolder>() {
     class LeaderboardViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val itemView: ConstraintLayout = view.findViewById(R.id.leaderboard_item)
     }
@@ -19,14 +20,14 @@ class LeaderboardAdapter (private val dataset: List<LeaderboardScore>) : Recycle
     }
 
     override fun getItemCount(): Int {
-        return dataset.size
+        return dataset.value?.size ?: 0
     }
 
     override fun onBindViewHolder(holder: LeaderboardViewHolder, position: Int) {
-        val score = dataset[position]
+        val score = dataset.value?.get(position)
         holder.itemView.findViewById<TextView>(R.id.place_and_name).text =
-            "${position + 1}. ${score.name}"
+            "${position + 1}. ${score?.name}"
         holder.itemView.findViewById<TextView>(R.id.score).text =
-            "${score.score}"
+            "${score?.score}"
     }
 }

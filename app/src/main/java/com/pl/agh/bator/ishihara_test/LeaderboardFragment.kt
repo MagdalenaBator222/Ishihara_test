@@ -1,6 +1,5 @@
 package com.pl.agh.bator.ishihara_test
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -37,9 +36,10 @@ class LeaderboardFragment : Fragment() {
 
         //TODO: Get real
         // temporary displaying made up leaderboard
-        val mockupData = MockupData().loadMockup()
+        val data = IshiharaViewModel().scores
         val recyclerView = _binding!!.recyclerView
-        recyclerView.adapter = LeaderboardAdapter(mockupData)
+        recyclerView.adapter = LeaderboardAdapter(data)
+
 
         return binding.root
     }
