@@ -1,6 +1,5 @@
 package com.pl.agh.bator.ishihara_test.network
 
-import com.pl.agh.bator.ishihara_test.LeaderboardScore
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

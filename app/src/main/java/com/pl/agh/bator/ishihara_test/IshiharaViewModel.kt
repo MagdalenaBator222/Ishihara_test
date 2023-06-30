@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pl.agh.bator.ishihara_test.network.LeaderboardApi
+import com.pl.agh.bator.ishihara_test.network.LeaderboardScore
 import kotlinx.coroutines.launch
 
 /**

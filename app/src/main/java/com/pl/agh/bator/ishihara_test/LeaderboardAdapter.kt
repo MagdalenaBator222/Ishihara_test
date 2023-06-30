@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
+import com.pl.agh.bator.ishihara_test.network.LeaderboardScore
 
 class LeaderboardAdapter(private val dataset: LiveData<List<LeaderboardScore>>) : RecyclerView.Adapter<LeaderboardAdapter.LeaderboardViewHolder>() {
     class LeaderboardViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {

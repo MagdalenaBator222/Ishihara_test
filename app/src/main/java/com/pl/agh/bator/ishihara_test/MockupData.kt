@@ -1,5 +1,7 @@
 package com.pl.agh.bator.ishihara_test
 
+import com.pl.agh.bator.ishihara_test.network.LeaderboardScore
+
 class MockupData {
     fun loadMockup(): List<LeaderboardScore> {
         return listOf(

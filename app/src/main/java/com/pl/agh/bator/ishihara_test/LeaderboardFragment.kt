@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.pl.agh.bator.ishihara_test.databinding.FragmentLeaderboardBinding
@@ -18,7 +19,7 @@ class LeaderboardFragment : Fragment() {
     private var _binding: FragmentLeaderboardBinding? = null
     private val binding get() = _binding!! // get-only property
 
-    private val viewModel : IshiharaViewModel by viewModels()
+    private val viewModel : IshiharaViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
