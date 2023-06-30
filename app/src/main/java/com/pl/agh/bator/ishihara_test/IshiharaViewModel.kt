@@ -17,7 +17,11 @@ class IshiharaViewModel : ViewModel() {
 
     init {
         viewModelScope.launch {
-            _scores.value = LeaderboardApi.retrofitService.getLeaderboard()
+            try {
+                _scores.value = LeaderboardApi.retrofitService.getLeaderboard()
+            } catch (error: java.lang.Exception) {
+                _scores.value = listOf() // empty list in case of no internet connection
+            }
         }
     }
 

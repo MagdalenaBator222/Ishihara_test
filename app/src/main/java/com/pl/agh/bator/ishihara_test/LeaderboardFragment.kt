@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.pl.agh.bator.ishihara_test.databinding.FragmentLeaderboardBinding
 
@@ -16,6 +17,8 @@ class LeaderboardFragment : Fragment() {
 
     private var _binding: FragmentLeaderboardBinding? = null
     private val binding get() = _binding!! // get-only property
+
+    private val viewModel : IshiharaViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,9 @@ class LeaderboardFragment : Fragment() {
 
         //TODO: Get real
         // temporary displaying made up leaderboard
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+
         val data = IshiharaViewModel().scores
         val recyclerView = _binding!!.recyclerView
         recyclerView.adapter = LeaderboardAdapter(data)
