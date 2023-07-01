@@ -1,34 +1,41 @@
 package com.pl.agh.bator.ishihara_test
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.lifecycle.LiveData
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.pl.agh.bator.ishihara_test.databinding.LeaderboardItemBinding
 import com.pl.agh.bator.ishihara_test.network.LeaderboardScore
 
-class LeaderboardAdapter(private val dataset: LiveData<List<LeaderboardScore>>) : RecyclerView.Adapter<LeaderboardAdapter.LeaderboardViewHolder>() {
-    class LeaderboardViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        val itemView: ConstraintLayout = view.findViewById(R.id.leaderboard_item)
+class LeaderboardAdapter :
+    ListAdapter<LeaderboardScore, LeaderboardAdapter.LeaderboardViewHolder>(DiffCallback) {
+    class LeaderboardViewHolder(private var binding: LeaderboardItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(leaderboardScore: LeaderboardScore){
+            binding.item = leaderboardScore
+            binding.executePendingBindings()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeaderboardViewHolder {
-        val adapterLayout = LayoutInflater.from(parent.context)
-            .inflate(R.layout.leaderboard_item, parent, false)
-        return LeaderboardViewHolder(adapterLayout)
-    }
-
-    override fun getItemCount(): Int {
-        return dataset.value?.size ?: 0
+        return LeaderboardViewHolder(
+            LeaderboardItemBinding.inflate(LayoutInflater.from(parent.context))
+        )
     }
 
     override fun onBindViewHolder(holder: LeaderboardViewHolder, position: Int) {
-        val score = dataset.value?.get(position)
-        holder.itemView.findViewById<TextView>(R.id.place_and_name).text =
-            "${position + 1}. ${score?.name}"
-        holder.itemView.findViewById<TextView>(R.id.score).text =
-            "${score?.score}"
+        val leaderboardItem = getItem(position)
+        holder.bind(leaderboardItem)
+    }
+
+    companion object DiffCallback : DiffUtil.ItemCallback<LeaderboardScore>() {
+        override fun areItemsTheSame(oldItem: LeaderboardScore, newItem: LeaderboardScore): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: LeaderboardScore, newItem: LeaderboardScore): Boolean {
+            return oldItem.name == newItem.name
+        }
     }
 }
