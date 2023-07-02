@@ -58,12 +58,12 @@ class ChooseModeFragment : Fragment() {
     fun changeDescription(state: Boolean) {
         if(state)
         {
-            _binding!!.descriptionImage.setImageResource(R.drawable.podium)
+            _binding!!.descriptionImage.setImageResource(R.drawable.podium_kolor)
             binding!!.descriptionText.setText(R.string.versus_description)
         }
         else
         {
-            _binding!!.descriptionImage.setImageResource(R.drawable.eye)
+            _binding!!.descriptionImage.setImageResource(R.drawable.eye_icon_foreground)
             _binding!!.descriptionText.setText(R.string.test_description)
         }
     }

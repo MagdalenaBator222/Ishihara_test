@@ -2,11 +2,13 @@ package com.pl.agh.bator.ishihara_test.data
 
 import com.pl.agh.bator.ishihara_test.R
 
+const val MAX_NO_OF_PLATES = 26
+const val SCORE_INCREASE = 1
 
 class Datasource {
 
-    fun loadPlates(): List<IshiharaPlate> {
-        return listOf<IshiharaPlate>(
+    fun loadPlates(): MutableList<IshiharaPlate> {
+        return mutableListOf<IshiharaPlate>(
             IshiharaPlate(1, R.drawable.plate_1, listOf<IshiharaAnswer>(
                 IshiharaAnswer("12", answerMeaning.CORRECT),
                 IshiharaAnswer("1", answerMeaning.OTHER),

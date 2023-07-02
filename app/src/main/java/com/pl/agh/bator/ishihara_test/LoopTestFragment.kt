@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pl.agh.bator.ishihara_test.databinding.FragmentLoopTestBinding
@@ -19,6 +20,8 @@ class LoopTestFragment : Fragment() {
 
     private var _binding : FragmentLoopTestBinding? = null
     private val binding get() = _binding!! // get-only property
+
+    private val viewModel : IshiharaViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,24 +44,43 @@ class LoopTestFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewModel.reinitializeData(false)
+        updatePlateOnScreen()
         // navigate to the next screen after clicking on one of the buttons
         binding.answer1.setOnClickListener {
-            findNavController().navigate(R.id.action_loopTestFragment_to_resultsTestFragment)
+            onAnswerSelected()
         }
 
         binding.answer2.setOnClickListener {
-            findNavController().navigate(R.id.action_loopTestFragment_to_resultsTestFragment)
+            onAnswerSelected()
         }
 
         binding.answer3.setOnClickListener {
-            findNavController().navigate(R.id.action_loopTestFragment_to_resultsTestFragment)
+            onAnswerSelected()
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun onAnswerSelected() {
+        if(viewModel.currentAnswerCount.value == viewModel.MAX_NO_OF_PLATES) {
+            findNavController().navigate(R.id.action_loopTestFragment_to_resultsTestFragment)
+        } else {
+            viewModel.getNextPlate()
+            updatePlateOnScreen()
+        }
+    }
+
+    private fun updatePlateOnScreen() {
+        binding.plateImage.setImageResource(viewModel.currentPlate.value!!.imageResource)
+        val answerOrder = listOf<Int>(0, 1, 2).shuffled()
+
+        binding.answer1.text = viewModel.currentPlate.value!!.answers[answerOrder[0]].answer
+        binding.answer2.text = viewModel.currentPlate.value!!.answers[answerOrder[1]].answer
+        binding.answer3.text = viewModel.currentPlate.value!!.answers[answerOrder[2]].answer
     }
 
     /*
