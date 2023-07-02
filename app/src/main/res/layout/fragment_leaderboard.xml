@@ -45,7 +45,6 @@
             app:layout_constraintTop_toBottomOf="@+id/score_divider"
             app:listData="@{viewModel.scores}"
             android:layout_marginTop="20dp"/>
-
         <TextView
             android:id="@+id/result_caption"
             android:layout_width="wrap_content"
@@ -53,7 +52,7 @@
             app:layout_constraintTop_toBottomOf="@id/recycler_view"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             style="@style/TextAppearance.Material3.LabelLarge"
             android:text="@string/result_caption"/>
         <TextView

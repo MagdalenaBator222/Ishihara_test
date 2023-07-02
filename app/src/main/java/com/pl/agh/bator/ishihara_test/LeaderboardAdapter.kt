@@ -19,8 +19,9 @@ class LeaderboardAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeaderboardViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
         return LeaderboardViewHolder(
-            LeaderboardItemBinding.inflate(LayoutInflater.from(parent.context))
+            LeaderboardItemBinding.inflate(layoutInflater, parent, false)
         )
     }
 
