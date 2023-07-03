@@ -87,7 +87,7 @@ class Datasource {
                 IshiharaAnswer("8", answerMeaning.RED_GREEN)
             )),
             IshiharaPlate(17, R.drawable.plate_17, listOf<IshiharaAnswer>(
-                IshiharaAnswer("96", answerMeaning.CORRECT),
+                IshiharaAnswer("73", answerMeaning.CORRECT),
                 IshiharaAnswer("nothing", answerMeaning.RED_GREEN),
                 IshiharaAnswer("16", answerMeaning.RED_GREEN)
             )),
