@@ -29,20 +29,23 @@
         app:singleSelection="true"
         app:selectionRequired="true"
         app:checkedButton="@id/test_option"
-        >
+        android:backgroundTint="@color/orange_200">
         <Button
             android:id="@+id/test_option"
             style="?attr/materialButtonOutlinedStyle"
+            android:backgroundTint="@color/primary_color_tint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/test"
             android:layout_weight="1"
             app:icon="@drawable/mode_selector"
             app:iconPadding="-25dp"
-            android:paddingStart="50dp"/>
+            android:paddingStart="50dp"
+            />
         <Button
             android:id="@+id/versus_option"
             style="?attr/materialButtonOutlinedStyle"
+            android:backgroundTint="@color/primary_color_tint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/versus"

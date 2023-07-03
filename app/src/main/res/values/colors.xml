@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#2aa78f</color>
     <color name="turquoise_200">#2ED8B7</color>
     <color name="turquoise_500">#2aa78f</color>
     <color name="turquoise_700">#0F6E5C</color>

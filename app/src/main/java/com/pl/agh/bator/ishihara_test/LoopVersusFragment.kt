@@ -19,7 +19,7 @@ class LoopVersusFragment : Fragment() {
     private var _binding : FragmentLoopVersusBinding? = null
     private val binding get() = _binding!! // get-only property
 
-    private val viewModel : IshiharaViewModel by activityViewModels()
+    private val sharedViewModel : IshiharaViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +42,11 @@ class LoopVersusFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.reinitializeData(true)
+        sharedViewModel.reinitializeData(true)
+        binding?.apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = sharedViewModel
+        }
         updatePlateOnScreen()
         // navigate to the next screen after clicking on one of the buttons
         binding.answer1.setOnClickListener {
@@ -64,22 +68,22 @@ class LoopVersusFragment : Fragment() {
     }
 
     private fun onAnswerSelected(answer: Int) {
-        viewModel.checkAnswer(answer)
-        if(viewModel.currentAnswerCount.value == viewModel.MAX_NO_OF_PLATES) {
+        sharedViewModel.checkAnswer(answer)
+        if(sharedViewModel.currentAnswerCount.value == sharedViewModel.MAX_NO_OF_PLATES) {
             findNavController().navigate(R.id.action_loopVersusFragment_to_resultsVersusFragment)
         } else {
-            viewModel.getNextPlate()
+            sharedViewModel.getNextPlate()
             updatePlateOnScreen()
         }
     }
 
     private fun updatePlateOnScreen() {
-        binding.plateImage.setImageResource(viewModel.currentPlate.value!!.imageResource)
+        binding.plateImage.setImageResource(sharedViewModel.currentPlate.value!!.imageResource)
         val answerOrder = listOf<Int>(0, 1, 2).shuffled()
-        viewModel.setOrder(answerOrder)
-        binding.answer1.text = viewModel.currentPlate.value!!.answers[answerOrder[0]].answer
-        binding.answer2.text = viewModel.currentPlate.value!!.answers[answerOrder[1]].answer
-        binding.answer3.text = viewModel.currentPlate.value!!.answers[answerOrder[2]].answer
+        sharedViewModel.setOrder(answerOrder)
+        binding.answer1.text = sharedViewModel.currentPlate.value!!.answers[answerOrder[0]].answer
+        binding.answer2.text = sharedViewModel.currentPlate.value!!.answers[answerOrder[1]].answer
+        binding.answer3.text = sharedViewModel.currentPlate.value!!.answers[answerOrder[2]].answer
     }
 
     /*

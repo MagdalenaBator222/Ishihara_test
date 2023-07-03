@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
 
 class IshiharaViewModel : ViewModel() {
-    var MAX_NO_OF_PLATES = 10
+    var MAX_NO_OF_PLATES = 102
     val VERSUS_COUNT = 10
     val TEST_COUNT = 38
     val SCORE_DECREASE = 7
@@ -48,18 +48,9 @@ class IshiharaViewModel : ViewModel() {
 
     fun getNextPlate() {
         _currentPlate.value = platesList[currentAnswerCount.value!!]
-        _currentAnswerCount.value = (_currentAnswerCount.value!!).plus(1)
+        _currentAnswerCount.value = (_currentAnswerCount.value ?: 0) + 1
     }
 
-    /*
-    fun isUserPlateCorrect(playerWord: ? ): Boolean {
-        if (playerAnswer.equals(currentAnswer, true)) {
-            increaseScore()
-            return true
-        }
-        return false
-    }
-    */
 
     fun getPlateList() {
         val datasource = Datasource()
