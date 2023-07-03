@@ -133,13 +133,13 @@ class Datasource {
             )),
             IshiharaPlate(26, R.drawable.plate_26, listOf<IshiharaAnswer>(
                 IshiharaAnswer("purple and red spots", answerMeaning.CORRECT),
-                IshiharaAnswer("purple line", answerMeaning.PROTANOPIA),
-                IshiharaAnswer("red  line", answerMeaning.DEUTERANOPIA)
+                IshiharaAnswer("only the purple line", answerMeaning.PROTANOPIA),
+                IshiharaAnswer("only the red  line", answerMeaning.DEUTERANOPIA)
             )),
             IshiharaPlate(27, R.drawable.plate_27, listOf<IshiharaAnswer>(
                 IshiharaAnswer("purple and red spots", answerMeaning.CORRECT),
-                IshiharaAnswer("purple line", answerMeaning.PROTANOPIA),
-                IshiharaAnswer("red  line", answerMeaning.DEUTERANOPIA)
+                IshiharaAnswer("only the purple line", answerMeaning.PROTANOPIA),
+                IshiharaAnswer("only the red  line", answerMeaning.DEUTERANOPIA)
             )),
             IshiharaPlate(28, R.drawable.plate_28, listOf<IshiharaAnswer>(
                 IshiharaAnswer("nothing", answerMeaning.CORRECT),
