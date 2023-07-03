@@ -2,9 +2,6 @@ package com.pl.agh.bator.ishihara_test.data
 
 import com.pl.agh.bator.ishihara_test.R
 
-const val MAX_NO_OF_PLATES = 26
-const val SCORE_INCREASE = 1
-
 class Datasource {
 
     fun loadPlates(): MutableList<IshiharaPlate> {

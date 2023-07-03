@@ -21,4 +21,5 @@
     <string name="confirm_btn">Confirm</string>
     <string name="cancel_btn">Cancel</string>
     <string name="progress">Progress: %s / %s</string>
+    <string name="slash">%s / %s</string>
 </resources>

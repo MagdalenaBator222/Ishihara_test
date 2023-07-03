@@ -1,11 +1,11 @@
 package com.pl.agh.bator.ishihara_test.data
 
-enum class answerMeaning {
-    CORRECT,
-    RED_GREEN,
-    PROTANOPIA,
-    DEUTERANOPIA,
-    OTHER
+enum class answerMeaning(val number: Int) {
+    CORRECT(0),
+    RED_GREEN(1),
+    PROTANOPIA(2),
+    DEUTERANOPIA(3),
+    OTHER(4)
 }
 
 data class IshiharaAnswer

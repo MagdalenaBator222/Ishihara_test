@@ -28,6 +28,9 @@ class IshiharaViewModel : ViewModel() {
     private val _scores = MutableLiveData<List<LeaderboardScore>>()
     val scores : LiveData<List<LeaderboardScore>> = _scores
 
+    private val _colorBlindnessScores = MutableLiveData(mutableListOf(0, 0, 0, 0, 0))
+    val colorBlindnessScores : LiveData<MutableList<Int>> = _colorBlindnessScores
+
     private val _displayedName = MutableLiveData<String>()
     val displayedName : LiveData<String> = _displayedName
 
@@ -90,6 +93,11 @@ class IshiharaViewModel : ViewModel() {
         {
             _currentScore.value = _currentScore.value!!.minus(SCORE_DECREASE)
         }
+    }
+
+    fun checkAnswerColorBlindness(answer: Int) {
+        _colorBlindnessScores.value!![currentPlate.value!!.answers[_answerOrder[answer - 1]].meaning.number] =
+            _colorBlindnessScores.value!![currentPlate.value!!.answers[_answerOrder[answer - 1]].meaning.number] + 1
     }
 
     fun setOrder(order: List<Int>) {

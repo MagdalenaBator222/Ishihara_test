@@ -52,15 +52,15 @@ class LoopTestFragment : Fragment() {
         updatePlateOnScreen()
         // navigate to the next screen after clicking on one of the buttons
         binding.answer1.setOnClickListener {
-            onAnswerSelected()
+            onAnswerSelected(1)
         }
 
         binding.answer2.setOnClickListener {
-            onAnswerSelected()
+            onAnswerSelected(2)
         }
 
         binding.answer3.setOnClickListener {
-            onAnswerSelected()
+            onAnswerSelected(3)
         }
     }
 
@@ -69,7 +69,8 @@ class LoopTestFragment : Fragment() {
         _binding = null
     }
 
-    private fun onAnswerSelected() {
+    private fun onAnswerSelected(answer: Int) {
+        sharedViewModel.checkAnswerColorBlindness(answer)
         if(sharedViewModel.currentAnswerCount.value == sharedViewModel.MAX_NO_OF_PLATES) {
             findNavController().navigate(R.id.action_loopTestFragment_to_resultsTestFragment)
         } else {
@@ -81,7 +82,7 @@ class LoopTestFragment : Fragment() {
     private fun updatePlateOnScreen() {
         binding.plateImage.setImageResource(sharedViewModel.currentPlate.value!!.imageResource)
         val answerOrder = listOf<Int>(0, 1, 2).shuffled()
-
+        sharedViewModel.setOrder(answerOrder)
         binding.answer1.text = sharedViewModel.currentPlate.value!!.answers[answerOrder[0]].answer
         binding.answer2.text = sharedViewModel.currentPlate.value!!.answers[answerOrder[1]].answer
         binding.answer3.text = sharedViewModel.currentPlate.value!!.answers[answerOrder[2]].answer

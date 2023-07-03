@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.pl.agh.bator.ishihara_test.IshiharaViewModel" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -35,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/score_divider"
         android:layout_marginTop="10dp"
-        android:text="24 / 26"
+        android:text="@{@string/slash(viewModel.colorBlindnessScores[0], viewModel.MAX_NO_OF_PLATES)}"
         android:textAppearance="@style/TextAppearance.Material3.DisplayLarge"/>
     <ImageView
         android:layout_width="250dp"
@@ -75,3 +81,4 @@
         style="@style/Widget.Material3.Button.OutlinedButton"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
