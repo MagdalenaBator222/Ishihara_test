@@ -49,6 +49,7 @@ class ResultsVersusFragment : Fragment() {
             findNavController().navigate(R.id.action_resultsVersusFragment_to_chooseModeFragment)
         }
         binding.submit.setOnClickListener {
+            viewModel.setName(binding.displayedName.editText?.text.toString().trim() ?: "error")
             findNavController().navigate(R.id.action_resultsVersusFragment_to_leaderboardFragment)
         }
     }

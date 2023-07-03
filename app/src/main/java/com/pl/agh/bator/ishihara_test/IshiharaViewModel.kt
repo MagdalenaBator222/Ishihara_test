@@ -28,6 +28,9 @@ class IshiharaViewModel : ViewModel() {
     private val _scores = MutableLiveData<List<LeaderboardScore>>()
     val scores : LiveData<List<LeaderboardScore>> = _scores
 
+    private val _displayedName = MutableLiveData<String>()
+    val displayedName : LiveData<String> = _displayedName
+
     private val _currentScore = MutableLiveData<Float>(100f)
     val currentScore: LiveData<Float>
         get() = _currentScore
@@ -111,6 +114,12 @@ class IshiharaViewModel : ViewModel() {
         _currentScore.value = _currentScore.value!!.minus(COUNTODWN_TIME - _currentTime.value!!)
         // subtracting unfinished plates
         _currentScore.value = _currentScore.value!!.minus((MAX_NO_OF_PLATES - currentAnswerCount.value!!) * SCORE_DECREASE)
+        onTimerEnd = {}
+    }
+
+    fun setName(name: String)
+    {
+        _displayedName.value = name
     }
 
     fun downloadLeaderboard() {
