@@ -46,15 +46,15 @@ class LoopVersusFragment : Fragment() {
         updatePlateOnScreen()
         // navigate to the next screen after clicking on one of the buttons
         binding.answer1.setOnClickListener {
-            onAnswerSelected()
+            onAnswerSelected(1)
         }
 
         binding.answer2.setOnClickListener {
-            onAnswerSelected()
+            onAnswerSelected(2)
         }
 
         binding.answer3.setOnClickListener {
-            onAnswerSelected()
+            onAnswerSelected(3)
         }
     }
 
@@ -63,7 +63,8 @@ class LoopVersusFragment : Fragment() {
         _binding = null
     }
 
-    private fun onAnswerSelected() {
+    private fun onAnswerSelected(answer: Int) {
+        viewModel.checkAnswer(answer)
         if(viewModel.currentAnswerCount.value == viewModel.MAX_NO_OF_PLATES) {
             findNavController().navigate(R.id.action_loopVersusFragment_to_resultsVersusFragment)
         } else {
@@ -75,7 +76,7 @@ class LoopVersusFragment : Fragment() {
     private fun updatePlateOnScreen() {
         binding.plateImage.setImageResource(viewModel.currentPlate.value!!.imageResource)
         val answerOrder = listOf<Int>(0, 1, 2).shuffled()
-
+        viewModel.setOrder(answerOrder)
         binding.answer1.text = viewModel.currentPlate.value!!.answers[answerOrder[0]].answer
         binding.answer2.text = viewModel.currentPlate.value!!.answers[answerOrder[1]].answer
         binding.answer3.text = viewModel.currentPlate.value!!.answers[answerOrder[2]].answer

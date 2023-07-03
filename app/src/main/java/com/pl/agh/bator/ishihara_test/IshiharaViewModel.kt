@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pl.agh.bator.ishihara_test.data.Datasource
 import com.pl.agh.bator.ishihara_test.data.IshiharaPlate
+import com.pl.agh.bator.ishihara_test.data.answerMeaning
 import com.pl.agh.bator.ishihara_test.databinding.FragmentLeaderboardBinding
 import com.pl.agh.bator.ishihara_test.databinding.FragmentLoopVersusBinding
 import com.pl.agh.bator.ishihara_test.network.LeaderboardApi
@@ -21,7 +22,7 @@ class IshiharaViewModel : ViewModel() {
     var MAX_NO_OF_PLATES = 10
     val VERSUS_COUNT = 10
     val TEST_COUNT = 38
-    val SCORE_INCREASE = 1
+    val SCORE_DECREASE = 7
 
     private val _scores = MutableLiveData<List<LeaderboardScore>>()
     val scores : LiveData<List<LeaderboardScore>> = _scores
@@ -42,6 +43,8 @@ class IshiharaViewModel : ViewModel() {
 
     private var _binding: FragmentLoopVersusBinding? = null
     private val binding get() = _binding!! // get-only property
+
+    private var _answerOrder: List<Int> = listOf()
 
     fun getNextPlate() {
         _currentPlate.value = platesList[currentAnswerCount.value!!]
@@ -79,6 +82,17 @@ class IshiharaViewModel : ViewModel() {
         _currentAnswerCount.value = 0
         getPlateList()
         getNextPlate()
+    }
+
+    fun checkAnswer(answer: Int) {
+        if(currentPlate.value!!.answers[_answerOrder[answer - 1]].meaning != answerMeaning.CORRECT)
+        {
+            _currentScore.value = _currentScore.value!!.minus(SCORE_DECREASE)
+        }
+    }
+
+    fun setOrder(order: List<Int>) {
+        _answerOrder = order
     }
 
     fun downloadLeaderboard() {

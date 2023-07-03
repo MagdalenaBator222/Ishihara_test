@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pl.agh.bator.ishihara_test.databinding.FragmentResultsVersusBinding
 
@@ -18,6 +19,8 @@ import com.pl.agh.bator.ishihara_test.databinding.FragmentResultsVersusBinding
 class ResultsVersusFragment : Fragment() {
     private var _binding: FragmentResultsVersusBinding? = null
     private val binding get() = _binding!! // get-only property
+
+    private val viewModel : IshiharaViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +43,7 @@ class ResultsVersusFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.scoreValue.text = viewModel.currentScore.value.toString()
         // return to main menu or submit your result to be displayed on the leaderboard
         binding.returnToMenu.setOnClickListener {
             findNavController().navigate(R.id.action_resultsVersusFragment_to_chooseModeFragment)
