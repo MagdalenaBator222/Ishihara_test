@@ -53,7 +53,7 @@
                 android:background="@drawable/rounded_rectangle_from_right"
                 android:gravity="center_vertical|start"
                 android:layout_marginStart="10dp"
-                android:text="0:30"
+                android:text="@{viewModel.currentTime.toString()}"
                 android:textColor="@color/design_default_color_on_primary"
                 />
         </LinearLayout>

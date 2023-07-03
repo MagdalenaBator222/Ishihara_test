@@ -1,5 +1,6 @@
 package com.pl.agh.bator.ishihara_test
 
+import android.os.CountDownTimer
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.pl.agh.bator.ishihara_test.data.Datasource
 import com.pl.agh.bator.ishihara_test.data.IshiharaPlate
 import com.pl.agh.bator.ishihara_test.data.answerMeaning
-import com.pl.agh.bator.ishihara_test.databinding.FragmentLeaderboardBinding
 import com.pl.agh.bator.ishihara_test.databinding.FragmentLoopVersusBinding
 import com.pl.agh.bator.ishihara_test.network.LeaderboardApi
 import com.pl.agh.bator.ishihara_test.network.LeaderboardScore
@@ -23,6 +23,7 @@ class IshiharaViewModel : ViewModel() {
     val VERSUS_COUNT = 10
     val TEST_COUNT = 38
     val SCORE_DECREASE = 7
+    val COUNTODWN_TIME = 30.0f
 
     private val _scores = MutableLiveData<List<LeaderboardScore>>()
     val scores : LiveData<List<LeaderboardScore>> = _scores
@@ -44,7 +45,13 @@ class IshiharaViewModel : ViewModel() {
     private var _binding: FragmentLoopVersusBinding? = null
     private val binding get() = _binding!! // get-only property
 
+    private val _currentTime = MutableLiveData<Float>(30f)
+    val currentTime: LiveData<Float>
+        get() = _currentTime
+
     private var _answerOrder: List<Int> = listOf()
+
+    var onTimerEnd = {}
 
     fun getNextPlate() {
         _currentPlate.value = platesList[currentAnswerCount.value!!]
@@ -84,6 +91,26 @@ class IshiharaViewModel : ViewModel() {
 
     fun setOrder(order: List<Int>) {
         _answerOrder = order
+    }
+
+    fun startCountdown()
+    {
+        object : CountDownTimer((COUNTODWN_TIME * 1000).toLong(), 100) {
+            override fun onTick(millisUntilFinished: Long) {
+                _currentTime.value = (millisUntilFinished / 100).toFloat() / 10
+            }
+            override fun onFinish() {
+                onTimerEnd()
+            }
+        }.start()
+
+    }
+
+    fun timeSubtraction()
+    {
+        _currentScore.value = _currentScore.value!!.minus(COUNTODWN_TIME - _currentTime.value!!)
+        // subtracting unfinished plates
+        _currentScore.value = _currentScore.value!!.minus((MAX_NO_OF_PLATES - currentAnswerCount.value!!) * SCORE_DECREASE)
     }
 
     fun downloadLeaderboard() {

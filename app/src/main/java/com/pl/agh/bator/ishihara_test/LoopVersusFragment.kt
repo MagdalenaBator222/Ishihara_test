@@ -43,6 +43,7 @@ class LoopVersusFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sharedViewModel.reinitializeData(true)
+        sharedViewModel.onTimerEnd = ::onFinish
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
@@ -60,6 +61,7 @@ class LoopVersusFragment : Fragment() {
         binding.answer3.setOnClickListener {
             onAnswerSelected(3)
         }
+        sharedViewModel.startCountdown()
     }
 
     override fun onDestroyView() {
@@ -70,11 +72,16 @@ class LoopVersusFragment : Fragment() {
     private fun onAnswerSelected(answer: Int) {
         sharedViewModel.checkAnswer(answer)
         if(sharedViewModel.currentAnswerCount.value == sharedViewModel.MAX_NO_OF_PLATES) {
-            findNavController().navigate(R.id.action_loopVersusFragment_to_resultsVersusFragment)
+            onFinish()
         } else {
             sharedViewModel.getNextPlate()
             updatePlateOnScreen()
         }
+    }
+
+    private fun onFinish() {
+        sharedViewModel.timeSubtraction()
+        findNavController().navigate(R.id.action_loopVersusFragment_to_resultsVersusFragment)
     }
 
     private fun updatePlateOnScreen() {
