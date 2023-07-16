@@ -40,7 +40,7 @@ class LeaderboardFragment : Fragment() {
 
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-        viewModel.downloadLeaderboard()
+        viewModel.updateLeaderboard()
         binding.recyclerView.adapter = LeaderboardAdapter()
 
         return binding.root

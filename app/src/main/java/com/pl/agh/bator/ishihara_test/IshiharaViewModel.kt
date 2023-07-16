@@ -1,6 +1,7 @@
 package com.pl.agh.bator.ishihara_test
 
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +12,7 @@ import com.pl.agh.bator.ishihara_test.data.answerMeaning
 import com.pl.agh.bator.ishihara_test.databinding.FragmentLoopVersusBinding
 import com.pl.agh.bator.ishihara_test.network.LeaderboardApi
 import com.pl.agh.bator.ishihara_test.network.LeaderboardScore
+import com.pl.agh.bator.ishihara_test.network.ResponseScore
 import kotlinx.coroutines.launch
 
 /**
@@ -130,11 +132,14 @@ class IshiharaViewModel : ViewModel() {
         _displayedName.value = name
     }
 
-    fun downloadLeaderboard() {
+    fun updateLeaderboard() {
         viewModelScope.launch {
-            try {
+            val response = LeaderboardApi.retrofitService.addRecord(ResponseScore(
+                _displayedName.value.toString(), _currentScore.value!!.toFloat()))
+
+            if(response.isSuccessful) {
                 _scores.value = LeaderboardApi.retrofitService.getLeaderboard()
-            } catch (error: java.lang.Exception) {
+            } else {
                 _scores.value = listOf() // empty list in case of no internet connection
             }
         }
