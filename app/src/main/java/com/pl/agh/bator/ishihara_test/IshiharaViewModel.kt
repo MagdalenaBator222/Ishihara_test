@@ -86,6 +86,7 @@ class IshiharaViewModel : ViewModel() {
         }
         _currentScore.value = 100f
         _currentAnswerCount.value = 0
+        _colorBlindnessScores.value = mutableListOf(0, 0, 0, 0, 0)
         getPlateList()
         getNextPlate()
     }
